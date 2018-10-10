@@ -1,4 +1,4 @@
-package example.strings;
+package examples.strings;
 
 
 public class EditDistanceTabulation {

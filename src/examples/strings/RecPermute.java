@@ -1,4 +1,4 @@
-package example.strings;
+package examples.strings;
 
 //anagram solver is similar to this
 public class RecPermute {

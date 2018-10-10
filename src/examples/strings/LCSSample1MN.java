@@ -1,4 +1,4 @@
-package example.strings;
+package examples.strings;
 
 //Longest common substring
 //Java implementation of finding length of longest 

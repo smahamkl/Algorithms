@@ -1,4 +1,4 @@
-package example.strings;
+package examples.strings;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
