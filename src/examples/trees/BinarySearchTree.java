@@ -1,4 +1,4 @@
-package examples.bt;
+package examples.trees;
 
 //lowest common ancestor
 public class BinarySearchTree {

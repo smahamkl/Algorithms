@@ -1,4 +1,4 @@
-package examples.bt;
+package examples.trees;
 
 import java.util.Queue;
 import java.util.LinkedList;

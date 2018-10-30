@@ -1,4 +1,4 @@
-package examples.bt;
+package examples.trees;
 
 import java.util.ArrayList;
 import java.util.HashSet;

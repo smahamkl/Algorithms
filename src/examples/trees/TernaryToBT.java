@@ -1,4 +1,4 @@
-package examples.bt;
+package examples.trees;
 
 //Convert Ternary Expression to a Binary Tree
 /*
