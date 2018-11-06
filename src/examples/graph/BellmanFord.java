@@ -207,7 +207,7 @@ public class BellmanFord {
 		// TODO Auto-generated method stub
 
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("src/graph4.txt"));
+			BufferedReader in = new BufferedReader(new FileReader("src/graph1.txt"));
 			String s;
 
 			s = in.readLine();

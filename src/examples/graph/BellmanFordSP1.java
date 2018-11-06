@@ -223,8 +223,12 @@ public class BellmanFordSP1 {
     public static void main(String[] args) throws FileNotFoundException {
     
         
-        In in = new In("src/graph4.txt");
-        int s = Integer.parseInt("0");
+        In in = new In("src\\graph4.txt");
+        
+        int s = Integer.parseInt(in.readLine().trim());
+        //int s = Integer.parseInt("0");
+        
+        System.out.println(s);
         
         EdgeWeightedDigraph1 G = new EdgeWeightedDigraph1(in);
 
