@@ -10,10 +10,8 @@ public class BreadthSearchSample {
 
 	/* function to print level order traversal of tree */
 	void printLevelOrder() {
-		int h = height(root);
-		
-		System.out.println(h);
-		
+		int h = height(root);		
+		System.out.println(h);		
 		System.exit(0);
 		
 		int i;
