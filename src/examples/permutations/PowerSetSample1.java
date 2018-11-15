@@ -20,15 +20,15 @@ Value of Counter            Subset
 public class PowerSetSample1 {
 
 	static void powerSet(int[] arr) {
-		double card = Math.pow(2, arr.length);
+		double cardinality = Math.pow(2, arr.length);
 
-		for (int i = 0; i < card; i++) {
+		for (int counter = 0; counter < cardinality; counter++) {
 			  for(int j = 0; j < arr.length; j++) 
 	            { 
 	                /* Check if jth bit in the  
 	                counter is set If set then  
 	                print jth element from set */
-	                if((i & (1 << j)) > 0) 
+	                if((counter & (1 << j)) > 0) 
 	                    System.out.print(arr[j]); 
 	            }
 	            System.out.println();
