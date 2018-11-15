@@ -1,7 +1,7 @@
 package examples.collections.arrays;
 
 /*
- * The N Queen is the problem of placing N chess queens on an N×N chessboard so that no two queens attack each other. For example, following is a solution for 4 Queen problem.
+ * The N Queen is the problem of placing N chess queens on an Nï¿½N chessboard so that no two queens attack each other. For example, following is a solution for 4 Queen problem.
  * The expected output is a binary matrix which has 1s for the blocks where queens are placed. For example, following is the output matrix for above 4 queen solution.
               { 0,  1,  0,  0}
               { 0,  0,  0,  1}
@@ -15,7 +15,8 @@ public class NQueenProblem {
 
 	static boolean isSafe(int[][] board, int r, int c) {
 		// upper diagonal towards left
-		int row = r; int col = c;
+		int row = r;
+		int col = c;
 		while (row >= 0 && col >= 0) {
 			if (board[row][col] == 1)
 				return false;
@@ -24,7 +25,8 @@ public class NQueenProblem {
 		}
 
 		// lower diagonal towards left
-		row = r; col = c;
+		row = r;
+		col = c;
 		while (row < n && col >= 0) {
 			if (board[row][col] == 1)
 				return false;
@@ -32,7 +34,8 @@ public class NQueenProblem {
 			row++;
 		}
 		// horizontally towards left
-		row = r; col = c;
+		row = r;
+		col = c;
 		while (col >= 0) {
 			if (board[row][col] == 1)
 				return false;

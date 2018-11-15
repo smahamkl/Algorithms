@@ -1,5 +1,11 @@
 package examples.trees;
 
+//Level order traversal of a tree is breadth first traversal for the tree.
+/*
+ * Algorithm:
+There are basically two functions in this method. One is to print all nodes at a given level (printGivenLevel), and other is to print level order traversal of the tree (printLevelorder). 
+printLevelorder makes use of printGivenLevel to print nodes at all levels one by one starting from root.
+ */
 public class BreadthSearchSample {
 
 	Node2 root;
@@ -50,6 +56,7 @@ public class BreadthSearchSample {
 			printGivenLevel(root.right, level - 1);
 		}
 	}
+	
 
 	/* Driver program to test above functions */
 	public static void main(String args[]) {

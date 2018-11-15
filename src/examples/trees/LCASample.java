@@ -24,7 +24,7 @@ public class LCASample {
 
 		return lcaLeft == null ? lcaRight : lcaLeft;
 	}
-
+	
 	// search if a node exists in a tree
 	public boolean searchNode(Node2 root, int n) {
 
@@ -54,6 +54,9 @@ public class LCASample {
 		System.out.println("LCA of 3 & 5: " + tree.lca(tree.root, 3, 5).data);
 
 		System.out.println("Searching for element 5: " + tree.searchNode(tree.root, 2));
+		
+		boolean cond = true;
+		
 	}
 
 }
