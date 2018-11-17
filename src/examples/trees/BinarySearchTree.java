@@ -26,13 +26,13 @@ public class BinarySearchTree {
     {
         // Let us construct the BST shown in the above figure
     	BinarySearchTree tree = new BinarySearchTree();
-        tree.root = tree.new Node(20);
-        tree.root.left = tree.new Node(8);
-        tree.root.right = tree.new Node(22);
-        tree.root.left.left = tree.new Node(4);
-        tree.root.left.right = tree.new Node(12);
-        tree.root.left.right.left = tree.new Node(10);
-        tree.root.left.right.right = tree.new Node(14);
+        tree.root = new Node(20);
+        tree.root.left = new Node(8);
+        tree.root.right = new Node(22);
+        tree.root.left.left = new Node(4);
+        tree.root.left.right = new Node(12);
+        tree.root.left.right.left = new Node(10);
+        tree.root.left.right.right = new Node(14);
   
         int n1 = 10, n2 = 14;
         Node t = lca(tree.root, n1, n2);
@@ -48,17 +48,6 @@ public class BinarySearchTree {
         t = lca(tree.root, n1, n2);
         System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data);
   
-    }
-    class Node {
-    	
-    	int data;
-    	Node left, right;
-    	
-    	Node(int data)
-    	{
-    		this.data = data;
-    		this.left = this.right = null;
-    	}
     }
 
 }

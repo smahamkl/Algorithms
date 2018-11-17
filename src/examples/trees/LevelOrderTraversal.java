@@ -43,15 +43,5 @@ public class LevelOrderTraversal {
 		
 	}
 
-}
 
-class Node {
-	Node left, right;
-	int data;
-
-	public Node(int item) {
-		data = item;
-		left = null;
-		right = null;
-	}
 }
