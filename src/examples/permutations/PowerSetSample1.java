@@ -28,7 +28,7 @@ public class PowerSetSample1 {
 	                /* Check if jth bit in the
 	                counter is set If set then
 	                print jth element from set */
-	                if((counter & (1 << j)) > 0) 
+	                if((counter & (1 << j)) > 0)
 	                    System.out.print(arr[j]);
 	            }
 	            System.out.println();

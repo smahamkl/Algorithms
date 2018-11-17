@@ -1,60 +1,71 @@
 package examples.trees;
 
 //Given a binary tree, check whether it is a mirror of itself.
+/*
+ * Given a binary tree, check whether it is a mirror of itself.
+
+For example, this binary tree is symmetric:
+
+     1
+   /   \
+  2     2
+ / \   / \
+3   4 4   3
+ */
 public class CheckSymmetricTree {
 
-	Node root;
-
-	static int height(Node root) {
+	static boolean checkIfTreeSymmetric(String[] arr) {
+		CharNode root = buildTree(arr, null, 0);
+		//inOrder(root);
+		
 		if (root == null)
-			return 0;
-
-		int leftHeight = height(root.left);
-		int rightHeight = height(root.right);
-
-		if (leftHeight > rightHeight)
-			return 1 + leftHeight;
-		else
-			return 1 + rightHeight;
-	}
-
-	static boolean checkIfTreeSymmetric(Node root) {
-
-		int height = height(root);
-
-		for (int i = 0; i < height; i++) {
-			if(!checkNodesEqual(root.right, root.left, i))
-				return false;
+			return true;
+		else {
+			if (isMirror(root, root))
+				return true;
 		}
-
-		return true;
-	}
-
-	static boolean checkNodesEqual(Node left, Node right, int level) {
-		if (level == 0)
-			return true;
-
-		if (level == 1 && left.data == right.data)
-			return true;
-		else
-			checkNodesEqual(left.left, right.right, level - 1);
 
 		return false;
 	}
 
+	static boolean isMirror(CharNode n1, CharNode n2) {
+		if (n1 == null && n2 == null)
+			return true;
+
+		if (n1.data == n2.data)
+			return (isMirror(n1.left, n2.right) && isMirror(n1.right, n2.left));
+		else
+			return false;
+	}
+	//below is a helper function to traverse and print the nodes
+	static void inOrder(CharNode root) 
+    { 
+        if (root != null) { 
+            inOrder(root.left); 
+            System.out.print(root.data + " "); 
+            inOrder(root.right);
+            
+        } 
+    } 
+
+	static CharNode buildTree(String[] arr, CharNode root, int i) {
+
+		if (i < arr.length) {
+			root = new CharNode(arr[i]);
+			// insert left child
+			root.left = buildTree(arr, root.left, 2 * i + 1);
+			// insert right child
+			root.right = buildTree(arr, root.right, 2 * i + 2);
+		}
+		return root;
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		CheckSymmetricTree tree = new CheckSymmetricTree();
-		tree.root = new Node(10);
-		tree.root.left = new Node(5);
-		tree.root.right = new Node(5);
-		tree.root.left.left = new Node(1);
-		tree.root.left.right = new Node(7);
-		tree.root.right.left = new Node(1);
-		tree.root.right.right = new Node(7);
-		//tree.root.left.left.left = new Node(8);
+		//CheckSymmetricTree c = new CheckSymmetricTree();
 
-		System.out.println(checkIfTreeSymmetric(tree.root));
+		System.out.println(checkIfTreeSymmetric(new String[] { "10", "2", "2", "#", "1", "1", "#" }));
+		System.out.println(checkIfTreeSymmetric(new String[] { "4", "3", "4" }));
 	}
 
 }
