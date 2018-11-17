@@ -17,7 +17,7 @@ public class ArithGeoSample1 {
 					a++;
 				else
 					n++;
-					
+
 			}
 			if(n > 0 || (g > 0 && a > 0))
 				return "-1";
