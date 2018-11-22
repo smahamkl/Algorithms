@@ -37,13 +37,11 @@ public class PairSearchSample1 {
 
 		for (int i = 2; i < 10; i++) {
 			if (tmp_num[i] > 0) {
-	
 				int productFirstDigit = String.valueOf(i * Integer.parseInt(num)).charAt(0) - '0';
 				if (productFirstDigit == prevNbr)
 					return totIterations(String.valueOf(i * Integer.parseInt(num)), totIter + 1, prevNbr, tmp_num);
 				else if (!hasDistinctDigits(i * Integer.parseInt(num)))
 					return totIterations(String.valueOf(i * Integer.parseInt(num)), totIter + 1, prevNbr, tmp_num);
-
 			}
 		}
 		
@@ -51,10 +49,8 @@ public class PairSearchSample1 {
 			if (tmp_num[i] > 0) {
 				finalIter = Math.min(finalIter, totIterations(String.valueOf(i * Integer.parseInt(num)), totIter + 1, prevNbr, tmp_num));
 			}
-		}
-		
+		}		
 		return finalIter;
-
 	}
 
 	static boolean hasDistinctDigits(int number) {
