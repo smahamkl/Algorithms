@@ -40,9 +40,9 @@ public class CheckSymmetricTree {
 	//below is a helper function to traverse and print the nodes
 	static void inOrder(CharNode root) 
     { 
-        if (root != null) { 
-            inOrder(root.left); 
-            System.out.print(root.data + " "); 
+        if (root != null) {
+            inOrder(root.left);
+            System.out.print(root.data + " ");
             inOrder(root.right);
             
         } 
