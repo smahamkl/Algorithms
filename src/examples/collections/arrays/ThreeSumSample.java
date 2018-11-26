@@ -8,47 +8,73 @@ import java.util.Set;
 
 public class ThreeSumSample {
 
+	static class ThreeSumNumber {
+		Integer a, b, c;
+
+		public ThreeSumNumber(int _a, int _b, int _c) {
+			a = _a;
+			b = _b;
+			c = _c;
+		}
+
+		@Override
+		public boolean equals(Object o) {
+			ThreeSumNumber that = (ThreeSumNumber) o;
+			if (a + b == that.a + that.b || a + b == that.b + that.c || a + b == that.a + that.c) {
+				if (a + c == that.a + that.b || a + c == that.b + that.c || a + c == that.a + that.c) {
+					// if (b + c == that.a + that.b || b + c == that.b + that.c || b + c == that.a +
+					// that.c) {
+					return true;
+					// }
+
+				}
+
+			}
+
+			return false;
+		}
+
+		@Override
+		public int hashCode() {
+			if (a == 0 && b == 0 && c == 0)
+				return "0".hashCode();
+			else
+				return a.hashCode() + b.hashCode() + c.hashCode();
+		}
+	}
+
 	static boolean checkIfSum(int a, int b, int c) {
 
 		return (a + b + c) == 0 ? true : false;
 
 	}
 
-	static boolean checkIfCombinationAlreadyExisting(List<Integer> arr1, List<List<Integer>> n2) {
-
-		for (List<Integer> l : n2) {
-			if (listEqualsIgnoreOrder(arr1, l))
-				return true;
-		}
-
-		return false;
-
-	}
-
-	public static boolean listEqualsIgnoreOrder(List<Integer> list1, List<Integer> list2) {
-		return new HashSet<>(list1).equals(new HashSet<>(list2));
-	}
-
 	static List<List<Integer>> threeSum(int[] num) {
 
 		List<List<Integer>> result = new ArrayList<>();
+		Set<Integer> tmpSet = new HashSet<>();
+		Set<ThreeSumNumber> masterSet = new HashSet<>();
 
-		for (int i = 0; i < num.length - 2; i++) {
-			for (int j = i + 1; j < num.length - 1; j++) {
-				for (int k = num.length - 1; k > j; k--) {
+		for (int i = 0; i < num.length; i++) {
+			tmpSet.clear();
+			int pairSum = -1 * num[i];
 
-					if (checkIfSum(num[i], num[j], num[k])) {
-
-						if (!checkIfCombinationAlreadyExisting(Arrays.asList(new Integer[] { num[i], num[j], num[k] }),
-								result))
-							result.add(Arrays.asList(new Integer[] { num[i], num[j], num[k] }));
+			for (int j = 0; j < num.length; j++) {
+				if (i != j) {
+					if (tmpSet.contains(pairSum - num[j])) {
+						// now found the triplet
+						if (!masterSet.contains(new ThreeSumNumber(num[i], num[j], pairSum - num[j]))) {
+							result.add(Arrays.asList(new Integer[] { num[i], num[j], pairSum - num[j] }));
+							masterSet.add(new ThreeSumNumber(num[i], num[j], pairSum - num[j]));
+						}
+					} else {
+						tmpSet.add(num[j]);
 					}
-				}
 
+				}
 			}
 
 		}
-
 		return result;
 
 	}
@@ -61,7 +87,6 @@ public class ThreeSumSample {
 				-13, 10, 14, 1, -4, -4, 2, 5, 4, -11, -7, 3, 8, -10, 11, -11, -5, 7, 13, 3, -2, 8, -13, 2, 1, 9, -12,
 				-11, 6 };
 
-		// arr = new int[] { -1, 0, 1, 2, -1, -4 };
 		// arr = new int[] { 3, -2, 1, 0 };
 		// arr = new int[]
 		// {5,-11,-7,-2,4,9,4,4,-5,12,12,-14,-5,3,-3,-2,-6,3,3,-9,4,-13,6,2,11,12,10,-14,-15,11,0,5,8,0,10,-11,-6,-1,0,4,-4,-3,5,-2,-15,9,11,-13,-2,-8,-7,9,-6,7,-11,12,4,14,6,-4,3,-9,-14,-12,-2,3,-8,7,-13,7,-12,-9,11,0,4,12,-6,-7,14,-1,0,14,-6,1,6,-2,-9,-4,-11,12,-1,-1,10,-7,-6,-7,11,1,-15,6,-15,-12,12,12,3,1,9,12,9,0,-11,-14,-1};
@@ -284,6 +309,17 @@ public class ThreeSumSample {
 				41488, 1454, 5355, -34855, -72080, 24514, -58305, 3340, 34331, 8731, 77451, -64983, -57876, 82874,
 				62481, -32754, -39902, 22451, -79095, -23904, 78409, -7418, 77916 };
 
+		// arr = new int[] { -1, 0, 1, 2, -1, -4 };
+		/*
+		 * arr = new int[] { -9, -14, -3, 2, 0, -11, -5, 11, 5, -5, 4, -4, 5, -15, 14,
+		 * -8, -11, 10, -6, 1, -14, -12, -13, -11, 9, -7, -2, -13, 2, 2, -15, 1, 3, -3,
+		 * -12, -12, 1, -2, 6, 14, 0, -4, -13, -10, -12, 8, -2, -8, 3, -1, 8, 4, -6, 2,
+		 * 1, 10, 2, 14, 4, 12, 1, 4, -2, 11, 9, -7, 6, -13, 7, -3, 8, 14, 8, 10, 12,
+		 * 11, -4, -13, 10, 14, 1, -4, -4, 2, 5, 4, -11, -7, 3, 8, -10, 11, -11, -5, 7,
+		 * 13, 3, -2, 8, -13, 2, 1, 9, -12, -11, 6 };
+		 */
+		//arr = new int[] { 3, 0, -2, -1, 1, 2 };
+		//arr = new int[] { -4, -2, 1, -5, -4, -4, 4, -2, 0, 4, 0, -2, 3, 1, -5, 0 };
 		List<List<Integer>> result = threeSum(arr);
 
 		for (List<Integer> tmpList : result) {

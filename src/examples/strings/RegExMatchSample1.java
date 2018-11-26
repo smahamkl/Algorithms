@@ -54,17 +54,16 @@ public class RegExMatchSample1 {
 
 	static boolean regExMatch(String str, int startIdx, String regEx) {
 
-		if (startIdx > str.length())
+		if (startIdx > str.length() - 1)
 			return true;
 
 		if (!regEx.contains("*") && !regEx.contains(".")) {
 
 			int idx = str.substring(startIdx).indexOf(regEx);
-			
+
 			char curChar = '0';
-			for(int i = startIdx;i<idx + startIdx;i++)
-			{
-				if(curChar != '0' && curChar != str.charAt(i))
+			for (int i = startIdx; i < idx + startIdx; i++) {
+				if (curChar != '0' && curChar != str.charAt(i))
 					return false;
 				curChar = str.charAt(i);
 			}
@@ -81,7 +80,15 @@ public class RegExMatchSample1 {
 		} else if (regEx.contains("*")) {
 			char charToMatch = regEx.charAt(0);
 
-			if(str.substring(startIdx).charAt(startIdx) == charToMatch)
+			int idx = str.substring(startIdx).indexOf(charToMatch);
+			char curChar = '0';
+			for (int i = startIdx; i < idx + startIdx; i++) {
+				if (curChar != '0' && curChar != str.charAt(i))
+					return false;
+				curChar = str.charAt(i);
+			}
+
+			if(str.charAt(startIdx) == charToMatch)
 				return regExMatch(str, startIdx + 1, patternTokens.isEmpty() ? regEx : patternTokens.poll());
 			else
 				return regExMatch(str, startIdx, patternTokens.isEmpty() ? regEx : patternTokens.poll());
@@ -95,17 +102,21 @@ public class RegExMatchSample1 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String regexStr = "abc.*g";
-		String s = "abcde";
+		String regexStr = "b*a*";
+		String s = "bbab";
 
-		strTokenize(regexStr);
+		if (!regexStr.contains("*") && regexStr.length() < s.length())
+			System.out.println(false);
+		else {
+			strTokenize(regexStr);
 
-		LinkedList<String> str = tokenList;
-		for (int i = 0; i < str.size(); i++) {
-			System.out.println(str.get(i));
+			/*
+			 * LinkedList<String> str = tokenList; for (int i = 0; i < str.size(); i++) {
+			 * System.out.println(str.get(i)); }
+			 */
+
+			System.out.println(regExMatch(s, 0, patternTokens.poll()));
 		}
-
-		System.out.println(regExMatch(s, 0, patternTokens.poll()));
 
 	}
 }
