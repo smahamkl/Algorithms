@@ -20,7 +20,7 @@ public class WaterTrapSample {
 				}
 
 			} else if (arr[i] > arr[i - 1]) {
-				if(i == arr.length-1)
+				if (i == arr.length - 1)
 					totalVol += findWaterVol(arr, slowPtr, i);
 				declineStart = false;
 			}
@@ -30,17 +30,12 @@ public class WaterTrapSample {
 	}
 
 	static int findWaterVol(int[] arr, int from, int to) {
-		int result = 0;
+
 		int maxHeight = Math.min(arr[from], arr[to]);
+		int result = maxHeight * Math.max(0, (arr.length - 2));
 
-		while (arr[from] >= arr[from + 1]) {
-			result = result + (maxHeight - arr[from + 1]);
-			from = from + 1;
-		}
-
-		while (arr[to] >= arr[to - 1] && (to-1) > from) {
-			result = result + (maxHeight - arr[to - 1]);
-			to = to - 1;
+		for (int i = from + 1; i < to; i++) {
+			result -= arr[i];
 		}
 
 		return result;
@@ -48,9 +43,21 @@ public class WaterTrapSample {
 
 	public static void main(String[] args) {
 		int[] arr = new int[] { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
-		arr = new int[] { 2,0,2};
-		arr = new int[] { 5,2,1,2,1,5};
-		trapSample(arr);
+		//arr = new int[] { 2, 0, 2 };
+		//arr = new int[] { 5, 2, 1, 2, 1, 5 };
+		// trapSample(arr);
+
+		int l = 0, r = arr.length - 1;
+		int totalVolume = 0;
+		while (l < r) {
+			totalVolume = Math.max(totalVolume, findWaterVol(arr, l, r));
+			System.out.println("Total volume of water trapped: " + totalVolume);
+
+			if (l > r)
+				r--;
+			else
+				l++;
+		}
 
 	}
 
