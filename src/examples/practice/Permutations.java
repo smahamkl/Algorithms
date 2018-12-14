@@ -1,19 +1,39 @@
 package examples.practice;
 
-public class Permutations {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-	static void permute(int[] arr, int l, int r) {
+public class Permutations {
+	
+	static List<List<Integer>> l1 = new ArrayList<>();
+	
+    static List<List<Integer>> permute(int[] nums) {
+    	l1.clear();
+    	
+        return permutate(nums, 0, nums.length-1);
+    }
+
+	static List<List<Integer>> permutate(int[] arr, int l, int r) {
+
+		
 
 		if (l == r) {
 			printArr(arr);
+			ArrayList<Integer> l2 = new ArrayList<>();
+			for (int i : arr)
+				l2.add(i);
+			l1.add(l2);
 
 		} else {
 			for (int i = l; i <= r; i++) {
 				swapElement(arr, l, i);
-				permute(arr, l + 1, r);
+				permutate(arr, l + 1, r);
 				swapElement(arr, l, i);
 			}
 		}
+
+		return l1;
 
 	}
 
@@ -32,8 +52,8 @@ public class Permutations {
 	}
 
 	public static void main(String[] args) {
-		int[] arr = new int[] { 1,2,3,4};
-		permute(arr, 0, arr.length - 1);
+		int[] arr = new int[] { 1, 2, 3, 4 };
+		permute(arr);
 	}
 
 }
