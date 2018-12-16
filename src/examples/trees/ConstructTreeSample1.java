@@ -3,11 +3,11 @@ package examples.trees;
 /*
  * Construct Tree from given Inorder and Preorder traversals
 Let us consider the below traversals:
-Inorder sequence: D B E A F C
 Preorder sequence: A B D E C F
+Inorder sequence: D B E A F C
 
-In a Preorder sequence, leftmost element is the root of the tree. So we know ‘A’ is root for given sequences. By searching ‘A’ in Inorder sequence, we can find out all elements on left 
-side of ‘A’ are in left subtree and elements on right are in right subtree. So we know below structure now.
+In a Preorder sequence, leftmost element is the root of the tree. So we know ï¿½Aï¿½ is root for given sequences. By searching ï¿½Aï¿½ in Inorder sequence, we can find out all elements on left 
+side of ï¿½Aï¿½ are in left subtree and elements on right are in right subtree. So we know below structure now.
                  A
                /   \
              /       \
@@ -23,7 +23,7 @@ D       E  F
 Algorithm: buildTree()
 1) Pick an element from Preorder. Increment a Preorder Index Variable (preIndex in below code) to pick next element in next recursive call.
 2) Create a new tree node tNode with the data as picked element.
-3) Find the picked element’s index in Inorder. Let the index be inIndex.
+3) Find the picked elementï¿½s index in Inorder. Let the index be inIndex.
 4) Call buildTree for elements before inIndex and make the built tree as left subtree of tNode.
 5) Call buildTree for elements after inIndex and make the built tree as right subtree of tNode.
 6) return tNode.
@@ -37,40 +37,56 @@ public class ConstructTreeSample1 {
 		}
 		return -1;
 	}
-	
-	//here preOrderIdx has to be global, since this index needs to increment for every call(left/right)
-	//durin the building of the tree
+
+	// here preOrderIdx has to be global, since this index needs to increment for
+	// every call(left/right)
+	// durin the building of the tree
 	static int preOrderIdx = 0;
 
-	static CharNode constructTree(String[] inOrder, String[] preOrder, int fromInOrderIdx,
-			int toInOrderIdx, CharNode root) {
+	static CharNode constructTree(String[] inOrder, String[] preOrder, int fromInOrderIdx, int toInOrderIdx,
+			CharNode root) {
 
 		if (preOrderIdx < preOrder.length) {
-			
+
 			int inOrderIdx = getInorderIndex(inOrder, preOrder[preOrderIdx]);
-			
+
 			root = new CharNode(preOrder[preOrderIdx]);
 			preOrderIdx++;
 
 			if (inOrderIdx != -1 && (fromInOrderIdx < toInOrderIdx)) {
-				
-				root.left = constructTree(inOrder, preOrder, fromInOrderIdx, inOrderIdx - 1,
-						root.left);
 
-				root.right = constructTree(inOrder, preOrder, inOrderIdx + 1, toInOrderIdx,
-						root.right);
+				root.left = constructTree(inOrder, preOrder, fromInOrderIdx, inOrderIdx - 1, root.left);
+
+				root.right = constructTree(inOrder, preOrder, inOrderIdx + 1, toInOrderIdx, root.right);
 			}
 		}
 
 		return root;
 	}
 
-	static void inOrder(CharNode root) {
+	static void preOrder(CharNode root) {
 		if (root != null) {
 			System.out.print(root.data + " ");
-			inOrder(root.left);
-			inOrder(root.right);
+			preOrder(root.left);
+			preOrder(root.right);
 
+		}
+	}
+
+	static void InOrder(CharNode root) {
+		if (root != null) {
+			InOrder(root.left);
+			System.out.print(root.data + " ");
+			InOrder(root.right);
+
+		}
+	}
+	
+	static void postOrder(CharNode root) {
+		if (root != null) {
+			postOrder(root.left);
+			postOrder(root.right);
+			System.out.print(root.data + " ");
 		}
 	}
 
@@ -82,8 +98,8 @@ public class ConstructTreeSample1 {
 
 		CharNode root = null;
 
-		//construct & print the tree
-		inOrder(constructTree(inOrder, preOrder, 0, inOrder.length - 1, root));
+		// construct & print the tree
+		preOrder(constructTree(inOrder, preOrder, 0, inOrder.length - 1, root));
 	}
 
 }
