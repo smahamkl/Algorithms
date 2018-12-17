@@ -2,9 +2,9 @@ package examples.trees;
 
 public class CharNode {
 	
-	CharNode left, right;
+	public CharNode left, right;
 	
-	String data;
+	public String data;
 	
 	public CharNode(String _data)
 	{
