@@ -1,4 +1,4 @@
-package examples.practice;
+package examples.permutations;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,8 +1,6 @@
-package examples.practice;
+package examples.trees;
 
-import examples.trees.CharNode;
-
-public class ConstructTree {
+public class ConstructTreeString {
 
 	static int getInorderIndex(String[] inOrder, String element) {
 		for (int i = 0; i < inOrder.length; i++) {
