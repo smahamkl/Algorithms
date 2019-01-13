@@ -7,6 +7,7 @@ public class SubstringFinderSample {
 	static int[] subStr;
 	
 	//one idea is to take every substring of s and check if its an anagram of concatenated string of strList
+	//below method checks the big string one word at a time and form an array thats connects the indices abd values(kind of linked list)
 
 	static void subStringFinder(String s, String[] strList) {
 
