@@ -1,6 +1,5 @@
 package examples.collections.linkedlist;
 
-import examples.collections.linkedlist.AdditionSample1.ListNode;
 
 public class RemoveNthElement {
 
