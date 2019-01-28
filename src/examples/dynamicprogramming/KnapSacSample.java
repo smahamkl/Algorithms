@@ -1,4 +1,4 @@
-package examples.collections.arrays;
+package examples.dynamicprogramming;
 
 /*
  * 0-1 Knapsack Problem | DP-10

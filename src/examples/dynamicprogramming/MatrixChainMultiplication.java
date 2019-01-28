@@ -1,4 +1,4 @@
-package examples.practice;
+package examples.dynamicprogramming;
 
 public class MatrixChainMultiplication {
 
