@@ -1,4 +1,4 @@
-package examples.practice;
+package examples.collections.arrays;
 
 import java.util.Arrays;
 
