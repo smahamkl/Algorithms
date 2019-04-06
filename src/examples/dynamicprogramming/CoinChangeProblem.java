@@ -31,7 +31,7 @@ public class CoinChangeProblem {
 			// update minimum number of coins needed if choosing current
 			// coin resulted in solution
 			if (res != Integer.MAX_VALUE) {
-				coins = Integer.min(coins, res + 1);
+				coins = Math.min(coins, res + 1);
 			}
 		}
 

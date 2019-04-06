@@ -1,4 +1,4 @@
-package examples.practice;
+package examples.permutations;
 
 /*
  * Print all possible combinations of r elements in a given array of size n
