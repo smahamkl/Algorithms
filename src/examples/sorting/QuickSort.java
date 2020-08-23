@@ -43,6 +43,7 @@ public class QuickSort {
 		// TODO Auto-generated method stub
 
 		int[] arr = new int[] { 10, 80, 30, 90, 40, 50, 70, 20 };
+		
 
 		quickSort(arr, 0, 7);
 
