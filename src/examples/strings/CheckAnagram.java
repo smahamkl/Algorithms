@@ -61,6 +61,14 @@ public class CheckAnagram {
 
 	}
 
+	public void printArr(int[] arr)
+	{
+		for(int i:arr)
+		{
+			System.out.print(i + " ");
+		}
+		System.out.println();
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		CheckAnagram ca = new CheckAnagram();
@@ -69,6 +77,22 @@ public class CheckAnagram {
 		
 		System.out.println(ca.checkAnagramCharDiff("CDBABC", "ADCABD"));
 		
+		String str1 = "AACD";
+		String str2 = "ABCDEFGHIJ";
+		int baseArr1[] = new int[MAX];
+		int baseArr2[] = new int[MAX];
+		
+		for (int i = 0; i < str1.length() || i < str2.length(); i++) {
+			if(i < str1.length())
+				baseArr1[str1.charAt(i) - 'A']++;
+			if(i < str2.length())
+				baseArr2[str2.charAt(i) - 'A']++;
+		}
+		
+		ca.printArr(baseArr1);
+		ca.printArr(baseArr2);
+		
 	}
 
 }
+;

@@ -1,4 +1,4 @@
-package examples.streams;
+package examples.min;
 
 import java.util.*;
 /*
