@@ -1,4 +1,4 @@
-package examples.practice;
+package leetcode.mar21;
 /*
  * Given an integer array nums, return the length of the longest wiggle sequence.
 
